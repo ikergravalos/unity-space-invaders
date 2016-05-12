@@ -3,8 +3,12 @@ using System.Collections;
 
 public class ControlAlien : MonoBehaviour
 {
-	// Conexión al marcador, para poder actualizarlo
-	public GameObject marcador;
+
+    // Velocidad a la que se desplaza la nave (medido en u/s)
+    private float velocidad = 2f;
+
+    // Conexión al marcador, para poder actualizarlo
+    public GameObject marcador;
 
 	// Por defecto, 100 puntos por cada alien
 	public int puntos = 100;
@@ -19,8 +23,27 @@ public class ControlAlien : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-	
-	}
+
+        // Calculamos la anchura visible de la cámara en pantalla
+        float distanciaHorizontal = Camera.main.orthographicSize * Screen.width / Screen.height;
+
+        // Calculamos el límite izquierdo y el derecho de la pantalla
+        float limiteIzq = -1.0f * distanciaHorizontal;
+        float limiteDer = 1.0f * distanciaHorizontal;
+
+        // Nos movemos a la izquierda hasta llegar al límite para entrar por el otro lado
+
+        
+        
+        if (transform.position.x > limiteIzq) {
+            transform.Translate(Vector2.left * velocidad * Time.deltaTime);
+          }
+        else
+        {
+            transform.Translate(Vector2.down * velocidad * Time.deltaTime);
+        }
+
+    }
 
 	void OnCollisionEnter2D (Collision2D coll)
 	{
