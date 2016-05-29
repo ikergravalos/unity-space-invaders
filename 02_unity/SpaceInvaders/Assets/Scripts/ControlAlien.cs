@@ -24,6 +24,10 @@ public class ControlAlien : MonoBehaviour
 	void Update ()
 	{
 
+
+        //Le meto un valor a la distancia que quiero que baje el alien
+        //float distanciaBajar = Screen.height / 10 ;
+
         // Calculamos la anchura visible de la cámara en pantalla
         float distanciaHorizontal = Camera.main.orthographicSize * Screen.width / Screen.height;
 
@@ -35,16 +39,16 @@ public class ControlAlien : MonoBehaviour
 
         
         
-        if (transform.position.x > limiteIzq) {
+        /*if (transform.position.x > limiteIzq) {
             transform.Translate(Vector2.left * velocidad * Time.deltaTime);
           }
         else
         {
-            transform.Translate(Vector2.down * velocidad * Time.deltaTime);
+            transform.Translate(Vector2.down * 0.2f);
         }
-
+        */
     }
-
+    
 	void OnCollisionEnter2D (Collision2D coll)
 	{
 		// Detectar la colisión entre el alien y otros elementos
